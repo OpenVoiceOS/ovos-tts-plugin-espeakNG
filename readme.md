@@ -5,7 +5,7 @@ OpenVoiceOS TTS plugin for [espeak-ng](https://github.com/espeak-ng/espeak-ng)
 ## Install
 
 ```bash
-pip install jarbas_plugin_espeakNG_tts
+pip install ovos_tts_plugin_espeakng
 ```
 
 `espeak-ng` needs to be available
@@ -19,8 +19,8 @@ apt-get install espeak-ng
 
 ```json
   "tts": {
-    "module": "espeakNG_tts_plugin",
-    "espeakNG_tts_plugin": {
+    "module": "ovos_tts_plugin_espeakng",
+    "ovos_tts_plugin_espeakng": {
       "voice": "m1"
     }
  }

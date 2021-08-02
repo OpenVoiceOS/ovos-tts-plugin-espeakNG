@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 from setuptools import setup
 
-PLUGIN_ENTRY_POINT = 'espeakNG_tts_plugin = jarbas_tts_plugin_espeakng:EspeakNGTTS'
+PLUGIN_ENTRY_POINT = 'ovos_tts_plugin_espeakng = ovos_tts_plugin_espeakng:EspeakNGTTS'
 setup(
-    name='jarbas_plugin_espeakNG_tts',
+    name='ovos_tts_plugin_espeakng',
     version='0.0.1',
     description='espeakNG tts plugin for mycroft',
-    url='https://github.com/JarbasLingua/espeakNG-tts-plugin',
+    url='https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG',
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
-    packages=['jarbas_tts_plugin_espeakng'],
+    packages=['ovos_tts_plugin_espeakng'],
     install_requires=["phoneme_guesser",
-                      'ovos-plugin-manager>=0.0.1a4'],
+                      'ovos-plugin-manager>=0.0.1a7'],
     zip_safe=True,
     include_package_data=True,
     classifiers=[
