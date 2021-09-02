@@ -4,7 +4,7 @@ from setuptools import setup
 PLUGIN_ENTRY_POINT = 'ovos_tts_plugin_espeakng = ovos_tts_plugin_espeakng:EspeakNGTTS'
 setup(
     name='ovos_tts_plugin_espeakng',
-    version='0.0.1',
+    version='0.0.2',
     description='espeakNG tts plugin for mycroft',
     url='https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG',
     author='JarbasAi',
@@ -12,7 +12,7 @@ setup(
     license='Apache-2.0',
     packages=['ovos_tts_plugin_espeakng'],
     install_requires=["phoneme_guesser",
-                      'ovos-plugin-manager>=0.0.1a7'],
+                      'ovos-plugin-manager>=0.0.1a12'],
     zip_safe=True,
     include_package_data=True,
     classifiers=[
