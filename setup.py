@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 from setuptools import setup
 
-PLUGIN_ENTRY_POINT = 'ovos_tts_plugin_espeakng = ovos_tts_plugin_espeakng:EspeakNGTTS'
+PLUGIN_ENTRY_POINT = 'ovos-tts-plugin-espeakng = ovos_tts_plugin_espeakng:EspeakNGTTS'
 setup(
-    name='ovos_tts_plugin_espeakng',
-    version='0.0.2',
+    name='ovos-tts-plugin-espeakng',
+    version='0.0.3a1',
     description='espeakNG tts plugin for mycroft',
     url='https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG',
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
     packages=['ovos_tts_plugin_espeakng'],
-    install_requires=["phoneme_guesser",
-                      'ovos-plugin-manager>=0.0.1a12'],
+    install_requires=['ovos-plugin-manager>=0.0.1a12'],
     zip_safe=True,
     include_package_data=True,
     classifiers=[

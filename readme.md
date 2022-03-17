@@ -25,3 +25,18 @@ apt-get install espeak-ng
     }
  }
 ```
+
+
+## Docker
+
+build it
+```bash
+docker build . -t ovos/espeakng
+```
+
+run it
+```bash
+docker run -p 8080:9666 ovos/espeakng
+```
+
+use it `http://localhost:8080/synthesize/hello`
