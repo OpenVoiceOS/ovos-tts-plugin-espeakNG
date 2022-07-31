@@ -1,4 +1,5 @@
 import subprocess
+from distutils.spawn import find_executable
 
 from ovos_plugin_manager.templates.tts import TTS, TTSValidator
 
@@ -18,6 +19,10 @@ class EspeakNGTTS(TTS):
                                     "mark"])
         self.voice = self.voice or "m1"
 
+        # allow user to override espeak binary path
+        self.espeak_bin = self.config.get("binary") or \
+                          find_executable("espeak-ng")
+
     def modify_tag(self, tag):
         """Override to modify each supported ssml tag"""
         if "%" in tag:
@@ -36,7 +41,7 @@ class EspeakNGTTS(TTS):
     def get_tts(self, sentence, wav_file, lang=None):
         lang = lang or self.lang
         subprocess.call(
-            ['espeak-ng', '-m', "-w", wav_file, '-v', lang + '+' +
+            [self.espeak_bin, '-m', "-w", wav_file, '-v', lang + '+' +
              self.voice, sentence])
         return wav_file, None
 
@@ -50,18 +55,63 @@ class EspeakNGValidator(TTSValidator):
         pass
 
     def validate_connection(self):
-        try:
-            subprocess.call(['espeak-ng', '--version'])
-        except:
-            raise Exception(
-                'ESpeak is not installed. Run: sudo apt-get install espeak-ng')
+        if not self.tts.espeak_bin:
+            raise ImportError('espeak-ng executable not found. '
+                              'please install espeak-ng')
 
     def get_tts_class(self):
         return EspeakNGTTS
 
 
+def _get_voices():
+    """ helper method to populate plugin voice list """
+    espeak = find_executable("espeak-ng")
+    if not espeak:
+        # espeak-ng not installed, do not report invalid config options
+        return {}
+
+    voice_data = {}
+    v = subprocess.check_output([espeak, '--voices']).decode("utf-8")
+    for vd in v.split("\n")[1:]:  # skip header
+        # this cleans all the extra spaces
+        vd = " ".join((_ for _ in vd.split() if _))
+        if not vd:
+            continue
+
+        # parse relevant keys
+        _, lang, _, name, *_ = vd.split(" ")
+        name = name.replace("_", " ").title()
+        lang2 = lang  # espeak key
+
+        # TODO lang codes should be normalized better
+        if len(lang) == 3:
+            # what do? 3 letter codes not supported by ovos
+            continue
+        # merge dialects to the main lang
+        if len(lang.split("-")) > 2 or \
+                any((len(_) != 2 for _ in lang.split("-"))):
+
+            # hack to keep english subdialects sorted
+            if lang[:5] in ["en-us", "en-gb"]:
+                lang = lang[:5]
+            else:
+                lang = lang.split("-")[0]
+
+        if lang not in voice_data:
+            voice_data[lang] = []
+
+        # add male/female variants to list
+        voice_data[lang].append({'display_name': name + " Male", 'gender': "male", 'voice': "m1", "lang": lang2})
+        voice_data[lang].append({'display_name': name + " Female", 'gender': "female", 'voice': "f1", "lang": lang2})
+
+    return voice_data
+
+
+EspeakNGTTSPluginConfig = _get_voices()
+
 if __name__ == "__main__":
     e = EspeakNGTTS()
+    e.validator.validate_connection()
 
     ssml = """Hello world"""
     e.get_tts(ssml, "espeak.wav")
