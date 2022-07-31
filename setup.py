@@ -2,6 +2,8 @@
 from setuptools import setup
 
 PLUGIN_ENTRY_POINT = 'ovos-tts-plugin-espeakng = ovos_tts_plugin_espeakng:EspeakNGTTS'
+SAMPLE_CONFIGS = 'ovos-tts-plugin-espeakng.config = ' \
+                 'ovos_tts_plugin_espeakng:EspeakNGTTSPluginConfig'
 setup(
     name='ovos-tts-plugin-espeakng',
     version='0.0.3a1',
@@ -32,5 +34,6 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     keywords='mycroft OpenVoiceOS OVOS chatterbox plugin tts',
-    entry_points={'mycroft.plugin.tts': PLUGIN_ENTRY_POINT}
+    entry_points={'mycroft.plugin.tts': PLUGIN_ENTRY_POINT,
+                  'mycroft.plugin.tts.config': SAMPLE_CONFIGS}
 )
