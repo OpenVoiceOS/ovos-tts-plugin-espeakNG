@@ -112,8 +112,16 @@ def _get_voices():
             voice_data[lang] = []
 
         # add male/female variants to list
-        voice_data[lang].append({'display_name': name + " Male", 'gender': "male", 'voice': "m1", "lang": lang2})
-        voice_data[lang].append({'display_name': name + " Female", 'gender': "female", 'voice': "f1", "lang": lang2})
+        voice_data[lang].append({'display_name': name + " Male",
+                                 'gender': "male",
+                                 'voice': "m1",
+                                 "lang": lang2,
+                                 "offline": True})
+        voice_data[lang].append({'display_name': name + " Female",
+                                 'gender': "female",
+                                 'voice': "f1",
+                                 "lang": lang2,
+                                 "offline": True})
 
     return voice_data
 
