@@ -21,7 +21,8 @@ class EspeakNGTTS(TTS):
 
         # allow user to override espeak binary path
         self.espeak_bin = self.config.get("binary") or \
-                          find_executable("espeak-ng")
+                          find_executable("espeak-ng") or \
+                          find_executable("espeak")
 
     def modify_tag(self, tag):
         """Override to modify each supported ssml tag"""
@@ -45,6 +46,16 @@ class EspeakNGTTS(TTS):
              self.voice, sentence])
         return wav_file, None
 
+    @property
+    def available_languages(self) -> set:
+        """Return languages supported by this TTS implementation in this state
+        This property should be overridden by the derived class to advertise
+        what languages that engine supports.
+        Returns:
+            set: supported languages
+        """
+        return set(_get_voices().keys())
+
 
 class EspeakNGValidator(TTSValidator):
     def __init__(self, tts):
@@ -65,7 +76,7 @@ class EspeakNGValidator(TTSValidator):
 
 def _get_voices():
     """ helper method to populate plugin voice list """
-    espeak = find_executable("espeak-ng")
+    espeak = find_executable("espeak-ng") or find_executable("espeak")
     if not espeak:
         # espeak-ng not installed, do not report invalid config options
         return {}
