@@ -116,11 +116,13 @@ def _get_voices():
                                  'gender': "male",
                                  'voice': "m1",
                                  "lang": lang2,
+                                 "priority": 90,
                                  "offline": True})
         voice_data[lang].append({'display_name': name + " Female",
                                  'gender': "female",
                                  'voice': "f1",
                                  "lang": lang2,
+                                 "priority": 90,
                                  "offline": True})
 
     return voice_data
