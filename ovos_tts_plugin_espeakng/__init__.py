@@ -86,16 +86,9 @@ class EspeakNGValidator(TTSValidator):
         pass
 
     def validate_connection(self):
-<<<<<<< Updated upstream
         if not self.tts.espeak_bin:
             raise ImportError('espeak-ng executable not found. '
                               'please install espeak-ng')
-=======
-        try:
-            subprocess.call(["espeak-ng", "--version"])
-        except:
-            raise Exception("ESpeak is not installed. Run: sudo apt-get install espeak-ng")
->>>>>>> Stashed changes
 
     def get_tts_class(self):
         return EspeakNGTTS
