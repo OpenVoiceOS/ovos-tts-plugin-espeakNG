@@ -2,22 +2,41 @@ import subprocess
 from distutils.spawn import find_executable
 
 from ovos_plugin_manager.templates.tts import TTS, TTSValidator
+from ovos_utils.log import LOG
 
 
 class EspeakNGTTS(TTS):
+    """OVOS Text-To-Speech plugin using espeakNG"""
+
     def __init__(self, *args, **kwargs):
-        if "lang" not in kwargs:
-            kwargs["lang"] = "en-us"
-        if "config" not in kwargs:
-            kwargs["config"] = {}
-        super().__init__(*args, **kwargs,
-                         validator=EspeakNGValidator(self),
-                         ssml_tags=["speak", "say-as", "voice",
-                                    "audio", "prosody", "break",
-                                    "emphasis", "sub",
-                                    "tts:style", "p", "s",
-                                    "mark"])
-        self.voice = self.voice or "m1"
+        super().__init__(
+            *args,
+            **kwargs,
+            validator=EspeakNGValidator(self),
+            ssml_tags=[
+                "speak",
+                "say-as",
+                "voice",
+                "audio",
+                "prosody",
+                "break",
+                "emphasis",
+                "sub",
+                "tts:style",
+                "p",
+                "s",
+                "mark",
+            ]
+        )
+        LOG.debug(self.config)
+        self.lang = self.config.get("lang") or "en-us"
+        self.voice = self.config.get("voice") or "m1"
+        self.amplitude = self.config.get("tts", {}).get("ovos_tts_plugin_espeakng", {}).get("amplitude")
+        LOG.debug(f"Amplitude: {self.amplitude}")
+        self.gap = self.config.get("gap")
+        self.capital = self.config.get("capital")
+        self.pitch = self.config.get("pitch")
+        self.speed = self.config.get("speed")
 
         # allow user to override espeak binary path
         self.espeak_bin = self.config.get("binary") or \
@@ -40,6 +59,7 @@ class EspeakNGTTS(TTS):
         return tag
 
     def get_tts(self, sentence, wav_file, lang=None):
+        """Make TTS request and create a wav file with the response"""
         lang = lang or self.lang
         subprocess.call(
             [self.espeak_bin, '-m', "-w", wav_file, '-v', lang + '+' +
@@ -66,9 +86,16 @@ class EspeakNGValidator(TTSValidator):
         pass
 
     def validate_connection(self):
+<<<<<<< Updated upstream
         if not self.tts.espeak_bin:
             raise ImportError('espeak-ng executable not found. '
                               'please install espeak-ng')
+=======
+        try:
+            subprocess.call(["espeak-ng", "--version"])
+        except:
+            raise Exception("ESpeak is not installed. Run: sudo apt-get install espeak-ng")
+>>>>>>> Stashed changes
 
     def get_tts_class(self):
         return EspeakNGTTS

@@ -1,0 +1,13 @@
+{
+  "lang": "de-de",
+  "tts": {
+    "module": "ovos_tts_plugin_espeakng",
+    "ovos_tts_plugin_espeakng": {
+      "lang": "german-mbrola-5",
+      "voice": "german-mbrola-5",
+      "speed": "135",
+      "amplitude": "80",
+      "pitch": "20"
+    }
+  }
+}
