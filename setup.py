@@ -11,7 +11,7 @@ setup(
     url='https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG',
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
-    license='Apache-2.0',
+    license='GPL-3.0-or-later',
     packages=['ovos_tts_plugin_espeakng'],
     install_requires=['ovos-plugin-manager>=0.0.1a12'],
     zip_safe=True,
