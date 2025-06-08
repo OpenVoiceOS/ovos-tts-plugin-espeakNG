@@ -1,7 +1,7 @@
 import subprocess
 from distutils.spawn import find_executable
-
 from ovos_plugin_manager.templates.tts import TTS, TTSValidator
+from ovos_utils import classproperty
 
 
 class EspeakNGTTS(TTS):
@@ -46,8 +46,8 @@ class EspeakNGTTS(TTS):
              self.voice, sentence])
         return wav_file, None
 
-    @property
-    def available_languages(self) -> set:
+    @classproperty
+    def available_languages(cls) -> set:
         """Return languages supported by this TTS implementation in this state
         This property should be overridden by the derived class to advertise
         what languages that engine supports.
