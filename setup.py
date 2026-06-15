@@ -14,6 +14,7 @@ setup(
     license='GPL-3.0-or-later',
     packages=['ovos_tts_plugin_espeakng'],
     install_requires=['ovos-plugin-manager>=0.0.1a12'],
+    extras_require={"test": ["ovoscope[tts]", "pytest"]},
     zip_safe=True,
     include_package_data=True,
     classifiers=[
