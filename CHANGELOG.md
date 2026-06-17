@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.3a3](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.0.3a3) (2026-06-17)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.0.3a2...0.0.3a3)
+
+**Merged pull requests:**
+
+- test: add TTS intelligibility e2e \(ovoscope\) [\#23](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/23) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.0.3a2](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.0.3a2) (2026-06-16)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/539ce1dbac7d58795d18ea523b0a75022e4bd32b...0.0.3a2)
