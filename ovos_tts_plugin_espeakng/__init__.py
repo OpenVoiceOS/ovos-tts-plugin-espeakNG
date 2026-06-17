@@ -6,8 +6,12 @@ from ovos_utils import classproperty
 
 class EspeakNGTTS(TTS):
     def __init__(self, *args, **kwargs):
+        # config may arrive positionally (TTS(config)) or as a kwarg
+        config = kwargs.pop("config", None)
+        if config is None and args:
+            config, args = args[0], args[1:]
+        config = config or {}
         # lang is provided via config, not as a TTS.__init__ kwarg
-        config = kwargs.pop("config", None) or {}
         if "lang" in kwargs:
             config.setdefault("lang", kwargs.pop("lang"))
         config.setdefault("lang", "en-us")
@@ -42,11 +46,12 @@ class EspeakNGTTS(TTS):
                 tag = tag.replace(val, new_val)
         return tag
 
-    def get_tts(self, sentence, wav_file, lang=None):
+    def get_tts(self, sentence, wav_file, lang=None, voice=None, **kwargs):
         lang = lang or self.lang
+        voice = voice or self.voice
         subprocess.call(
             [self.espeak_bin, '-m', "-w", wav_file, '-v', lang + '+' +
-             self.voice, sentence])
+             voice, sentence])
         return wav_file, None
 
     @classproperty
