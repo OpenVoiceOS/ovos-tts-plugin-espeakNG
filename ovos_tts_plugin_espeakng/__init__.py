@@ -6,10 +6,14 @@ from ovos_utils import classproperty
 
 class EspeakNGTTS(TTS):
     def __init__(self, *args, **kwargs):
-        if "lang" not in kwargs:
-            kwargs["lang"] = "en-us"
-        if "config" not in kwargs:
-            kwargs["config"] = {}
+        # lang is provided via config, not as a TTS.__init__ kwarg
+        config = kwargs.pop("config", None) or {}
+        if "lang" in kwargs:
+            config.setdefault("lang", kwargs.pop("lang"))
+        config.setdefault("lang", "en-us")
+        # espeak variant; the base template otherwise reports voice "default"
+        config.setdefault("voice", "m1")
+        kwargs["config"] = config
         super().__init__(*args, **kwargs,
                          validator=EspeakNGValidator(self),
                          ssml_tags=["speak", "say-as", "voice",
@@ -17,7 +21,6 @@ class EspeakNGTTS(TTS):
                                     "emphasis", "sub",
                                     "tts:style", "p", "s",
                                     "mark"])
-        self.voice = self.voice or "m1"
 
         # allow user to override espeak binary path
         self.espeak_bin = self.config.get("binary") or \
