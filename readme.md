@@ -29,14 +29,32 @@ apt-get install espeak-ng
 
 ## Docker
 
-build it
+This plugin ships a self-contained image that serves espeak-ng behind
+[ovos-tts-server](https://github.com/OpenVoiceOS/ovos-tts-server)'s
+ElevenLabs-compatible HTTP API on port `9666`. espeak-ng runs fully offline, so the
+container needs no network access or API keys at runtime.
+
+Pull the published image:
+
 ```bash
-docker build . -t ovos/espeakng
+docker run --rm -p 9666:9666 ghcr.io/openvoiceos/ovos-tts-plugin-espeakng:dev
 ```
 
-run it
+…or build it locally, optionally overriding the default language:
+
 ```bash
-docker run -p 8080:9666 ovos/espeakng
+docker build -t ovos-tts-plugin-espeakng --build-arg LANG=pt .
+docker run --rm -p 9666:9666 ovos-tts-plugin-espeakng
 ```
 
-use it `http://localhost:8080/synthesize/hello`
+…or use the bundled compose file:
+
+```bash
+docker compose up
+```
+
+Synthesize speech:
+
+```bash
+curl 'http://localhost:9666/synthesize/hello%20world' --output hello.wav
+```
