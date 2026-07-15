@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0a1](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a1) (2026-07-15)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.0.3a3...0.1.0a1)
+
+**Merged pull requests:**
+
+- feat: serve espeak-ng via ovos-tts-server docker image [\#27](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/27) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.0.3a3](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.0.3a3) (2026-06-17)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.0.3a2...0.0.3a3)
