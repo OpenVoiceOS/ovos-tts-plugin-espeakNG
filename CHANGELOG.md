@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0a2](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a2) (2026-08-01)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a1...0.1.0a2)
+
+**Merged pull requests:**
+
+- docs: rewrite README in Simplified Technical English [\#32](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/32) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.1.0a1](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a1) (2026-07-15)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.0.3a3...0.1.0a1)
