@@ -24,8 +24,8 @@ Add this block to your OVOS configuration to select the plugin and a voice:
 
 ```json
   "tts": {
-    "module": "ovos_tts_plugin_espeakng",
-    "ovos_tts_plugin_espeakng": {
+    "module": "ovos-tts-plugin-espeakng",
+    "ovos-tts-plugin-espeakng": {
       "voice": "m1"
     }
  }
