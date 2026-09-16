@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0a3](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a3) (2026-09-16)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a2...0.1.0a3)
+
+**Merged pull requests:**
+
+- docs: fix module name to use hyphens in README config example [\#34](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/34) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.1.0a2](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a2) (2026-08-01)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a1...0.1.0a2)
