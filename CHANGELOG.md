@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0a4](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a4) (2026-09-18)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a3...0.1.0a4)
+
+**Merged pull requests:**
+
+- Update docker/setup-buildx-action action to v4 [\#31](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/31) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [0.1.0a3](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a3) (2026-09-16)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a2...0.1.0a3)
