@@ -44,7 +44,7 @@ class TestEspeakNGTTS(unittest.TestCase):
     def test_available_languages(self):
         langs = self.tts.available_languages
         self.assertTrue(langs)
-        self.assertTrue(any(l.startswith("en") for l in langs))
+        self.assertTrue(any(lang.startswith("en") for lang in langs))
 
     def test_get_tts_creates_valid_wav(self):
         path = os.path.join(tempfile.mkdtemp(), "espeak_out.wav")
