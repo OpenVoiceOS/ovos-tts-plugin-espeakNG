@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0a5](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a5) (2026-09-26)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a4...0.1.0a5)
+
+**Merged pull requests:**
+
+- ci: update the two actions actionlint reports as too old [\#39](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/39) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.0a4](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a4) (2026-09-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a3...0.1.0a4)
