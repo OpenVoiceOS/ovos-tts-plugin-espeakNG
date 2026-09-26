@@ -1,5 +1,6 @@
 import subprocess
 from distutils.spawn import find_executable
+
 from ovos_plugin_manager.templates.tts import TTS, TTSValidator
 from ovos_utils import classproperty
 
@@ -67,7 +68,7 @@ class EspeakNGTTS(TTS):
 
 class EspeakNGValidator(TTSValidator):
     def __init__(self, tts):
-        super(EspeakNGValidator, self).__init__(tts)
+        super().__init__(tts)
 
     def validate_lang(self):
         # TODO
@@ -93,7 +94,7 @@ def _get_voices():
     v = subprocess.check_output([espeak, '--voices']).decode("utf-8")
     for vd in v.split("\n")[1:]:  # skip header
         # this cleans all the extra spaces
-        vd = " ".join((_ for _ in vd.split() if _))
+        vd = " ".join(_ for _ in vd.split() if _)
         if not vd:
             continue
 
@@ -108,7 +109,7 @@ def _get_voices():
             continue
         # merge dialects to the main lang
         if len(lang.split("-")) > 2 or \
-                any((len(_) != 2 for _ in lang.split("-"))):
+                any(len(_) != 2 for _ in lang.split("-")):
 
             # hack to keep english subdialects sorted
             if lang[:5] in ["en-us", "en-gb"]:
