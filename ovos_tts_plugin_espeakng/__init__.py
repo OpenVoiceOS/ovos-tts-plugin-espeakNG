@@ -75,8 +75,13 @@ class EspeakNGValidator(TTSValidator):
 
     def validate_connection(self):
         if not self.tts.espeak_bin:
-            raise ImportError('espeak-ng executable not found. '
-                              'please install espeak-ng')
+            # RuntimeError, not ImportError: no module failed to import, an
+            # executable is missing from PATH. A caller that wants to tell a
+            # broken Python environment from a missing system package cannot
+            # do it with ImportError, and an unrelated "except ImportError"
+            # can swallow this by accident.
+            raise RuntimeError('espeak-ng executable not found. '
+                               'please install espeak-ng')
 
     def get_tts_class(self):
         return EspeakNGTTS
