@@ -6,7 +6,7 @@
 #
 # espeak-ng is an offline synthesizer, so this container needs no network access at
 # runtime.
-FROM python:3.11-slim
+FROM python:3.14-slim
 
 # espeak-ng: the synthesizer binary the plugin shells out to. It emits WAV directly,
 # so no ffmpeg transcoding is needed.
