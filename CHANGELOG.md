@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1a1](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.1a1) (2026-10-28)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a5...0.1.1a1)
+
+**Merged pull requests:**
+
+- fix: the validator raises RuntimeError for a missing binary [\#40](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/pull/40) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.0a5](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/tree/0.1.0a5) (2026-09-26)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-tts-plugin-espeakNG/compare/0.1.0a4...0.1.0a5)
