@@ -4,8 +4,8 @@ Synthesises a small set of phrases with the real plugin, transcribes the
 rendered audio back with a reference STT and scores the round-trip with
 WER/CER via ovoscope. Report-only by default (TTS_MAX_WER=1.0).
 """
-import os
 import json
+import os
 
 from ovoscope.tts_intelligibility import score_tts_intelligibility
 
