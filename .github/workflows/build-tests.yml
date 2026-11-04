@@ -12,3 +12,7 @@ jobs:
     with:
       python_versions: '["3.10", "3.11", "3.12", "3.13", "3.14"]'
       system_deps: 'espeak-ng'
+      # test/end2end needs ovoscope and a reference STT, and
+      # tts-intelligibility.yml already runs it. This job runs the unit tests.
+      test_path: 'test'
+      pytest_args: '--ignore=test/end2end'
